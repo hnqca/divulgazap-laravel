@@ -1,5 +1,4 @@
-<header class="bg-dark py-5"
-    style="background: url('/assets/images/hidden-code.png') no-repeat center center fixed; background-size: cover;">
+<header class="bg-dark py-5" style="background: url('/assets/images/hidden-code.png') no-repeat center center fixed; background-size: cover;">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder text-white">
@@ -8,6 +7,9 @@
             <p class="lead fw-normal text-white-50 mb-0">
                 {{ $description }}
             </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+                <a href="#" class="btn btn-outline-secondary btn-lg px-4">Categorias</a>
+            </div>
         </div>
     </div>
 </header>

@@ -1,10 +1,6 @@
 <?php
 
-use App\Models\Group;
+use App\Http\Controllers\Web\GroupController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function(){
-
-    echo '<pre>';
-    print_r(Group::all());
-});
+Route::get('/', [GroupController::class, 'index'])->name('home');
