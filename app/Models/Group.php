@@ -12,4 +12,9 @@ class Group extends Model
     {
         return $this->belongsTo(GroupCategory::class, 'category_id');
     }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return $this->created_at->format('d/m/Y');
+    }
 }

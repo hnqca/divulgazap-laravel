@@ -18,4 +18,17 @@ class GroupController extends Controller
 
         return view('pages.home', compact('groups'));
     }
+
+    public function show(string $slug)
+    {
+        $group = Group::where(['slug' => $slug, 'is_visible' => true])->first();
+
+        if (!$group) {
+            return redirect()->route('home');
+        }
+
+        return view('pages.group-show', [
+            'group' => $group
+        ]);
+    }
 }
