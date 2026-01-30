@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-header title="DivulgaZap" description="Encontre e divulgue grupos de WhatsApp por interesses como estudos, trabalho, tecnologia, jogos e muito mais." />
+<x-header title="DivulgaZAP" description="Encontre e divulgue grupos de WhatsApp por interesses como estudos, trabalho, tecnologia, jogos e muito mais." />
 
 <!-- Listing Groups -->
 <section class="bg-light py-5">

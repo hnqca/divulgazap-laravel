@@ -12,7 +12,7 @@ class GroupController extends Controller
     {
         $category = $request->query('category');
 
-        $groups = Group::with('category')->when($category, function ($query, $category) {
+        $groups = Group::where('is_visible', true)->with('category')->when($category, function ($query, $category) {
             $query->where('category_id', $category);
         })->get();
 

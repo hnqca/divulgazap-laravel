@@ -6,7 +6,7 @@
             </a>
             <ul class="ms-3 nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 d-sm-inline d-none">
                 <li>
-                    <a class="text-decoration-none text-white" href="#">Categorias</a>
+                    <a class="text-decoration-none text-white" href="{{ route('group.categories') }}">Categorias</a>
                 </li>
             </ul>
             <div class="text-end ms-4 ">
