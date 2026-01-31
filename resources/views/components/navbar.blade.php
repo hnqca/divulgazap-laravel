@@ -10,7 +10,7 @@
                 </li>
             </ul>
             <div class="text-end ms-4 ">
-                <a href="#" class="btn btn-warning fw-semibold">Enviar Grupo</a>
+                <a href="{{ route('group.create') }}" class="btn btn-warning fw-semibold">Enviar Grupo</a>
             </div>
         </div>
     </div>

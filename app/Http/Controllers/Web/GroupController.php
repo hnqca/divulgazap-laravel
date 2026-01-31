@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Group;
+use App\Models\GroupCategory;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -29,6 +30,15 @@ class GroupController extends Controller
 
         return view('pages.group-show', [
             'group' => $group
+        ]);
+    }
+
+    public function create()
+    {
+        $groupCategories = GroupCategory::all();
+
+        return view('pages.group-create', [
+            'groupCategories' => $groupCategories
         ]);
     }
 }
