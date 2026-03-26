@@ -8,6 +8,17 @@ class Group extends Model
 {
     protected $table = "groups";
 
+    protected $fillable = [
+        'category_id',
+        'name',
+        'slug',
+        'description',
+        'image_path',
+        'invite_code',
+        'is_visible',
+        'last_checked_at'
+    ];
+
     public function category()
     {
         return $this->belongsTo(GroupCategory::class, 'category_id');

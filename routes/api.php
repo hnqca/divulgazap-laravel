@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\GroupController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/groups/invite-code/{inviteCode}/validate', [GroupController::class, 'validate']);
+Route::post('/groups', [GroupController::class, 'store']);
