@@ -6,7 +6,7 @@
         <h1 class="text-center mb-5">{{ $group->name }}</h1>
         <div class="col-md-6 mb-5">
             <div class="card">
-                <img src="/assets/images/groups/{{ $group->image_path }}" class="card-img-top object-fit-cover group-img" width="100%" height="300px" />
+                <img src="{{ asset('storage/images/groups/'.$group->image_path) }}" class="card-img-top object-fit-cover group-img" width="100%" height="300px" />
                 <div class="card-body">
                     <h5 class="card-title fw-bold">{{ $group->name }}</h5>
                     <p class="card-text">{{ $group->description }}</p>
@@ -21,7 +21,7 @@
                 <p class="card-text">Este grupo foi enviado em <strong>{{ $group->created_at_formatted }}</strong>.</p>
                 <hr />
                 <div class="mt-2">
-                    <a href="#" class="text-decoration-none">Envie o seu grupo</a> também e comece a receber novos integrantes!
+                    <a href="{{ route('group.create') }}" class="text-decoration-none">Envie o seu grupo</a> também e comece a receber novos integrantes!
                 </div>
             </div>
         </div>
