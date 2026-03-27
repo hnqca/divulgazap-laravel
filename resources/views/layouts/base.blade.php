@@ -36,13 +36,12 @@
     @include('components.footer')
 
     <!-- Global JS -->
-    <script src="/assets/js/libs/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/libs/jquery.js"></script>
-    <script src="/assets/js/general.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js" integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0-rc.1/jquery.min.js" integrity="sha512-MXe5EK5gyK+fbhwQy/dukwz9fw71HZcsM4KsyDBDTvMyjymkiO0M5qqU0lF4vqLI4VnKf1+DIKf1GM6RFkO8PA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/assets/js/main.js"></script>
 
     <!-- Page JS -->
     @yield('scripts')
 
 </body>
-
 </html>

@@ -1,5 +1,9 @@
 @extends('layouts.base')
 
+@section('scripts')
+    <script src="/assets/js/pages/page-group-create.js"></script>
+@endsection
+
 @section('content')
 <main>
 
