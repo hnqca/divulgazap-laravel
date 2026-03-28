@@ -20,10 +20,11 @@ class StoreGroupRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'name'        => 'required|string|max:100',
-            'invite_code' => 'required|string|max:255|unique:groups,invite_code',
-            'category_id' => 'required|integer|exists:group_categories,id',
-            'description' => 'nullable|string',
+            'name'                       => 'required|string|max:100',
+            'invite_code'                => 'required|string|max:255|unique:groups,invite_code',
+            'category_id'                => 'required|integer|exists:group_categories,id',
+            'description'                => 'nullable|string',
+            'cloudflare_turnstile_token' => 'required'
         ];
     }
 
@@ -42,7 +43,9 @@ class StoreGroupRequest extends ApiRequest
             'category_id.integer'  => 'category_id_must_be_integer',
             'category_id.exists'   => 'category_invalid',
 
-            'description.string' => 'description_must_be_string'
+            'description.string' => 'description_must_be_string',
+
+            'cloudflare_turnstile_token' => "cloudflare_turnstile_token_required"
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGroupRequest;
 use App\Models\Group;
 use App\Services\GroupService;
+use App\Services\TurnstileService;
 use Illuminate\Support\Str;
 
 class GroupController extends Controller
@@ -35,7 +36,7 @@ class GroupController extends Controller
         ], 200);
     }
 
-    public function store(StoreGroupRequest $request, GroupService $groupService)
+    public function store(StoreGroupRequest $request, GroupService $groupService, TurnstileService $turnstileService)
     {
         $data = $request->validated();
 
@@ -49,6 +50,16 @@ class GroupController extends Controller
         }
 
         try {
+
+            $isValidTurnstile = $turnstileService->verify($data['cloudflare_turnstile_token'], $request->ip());
+
+            if (!$isValidTurnstile) {
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => 'cloudflare_turnstile_token_invalid'
+                ], 403);
+            }
+
             $data['image_path'] = $groupService->storeImageFromUrl($groupDataFromScraping['image']);
 
             $data['slug'] = Str::slug(TextNormalizer::normalize($data['name'])) . '-' . uniqid();

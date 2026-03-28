@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('scripts')
-    <script src="/assets/js/pages/page-group-create.js"></script>
+<script src="/assets/js/pages/page-group-create.js"></script>
 @endsection
 
 @section('content')
@@ -37,6 +37,7 @@
 
                         <form id="form-create-group">
                             @csrf
+
                             <div id="first-step" class="">
                                 <div class="mb-3">
                                     <label class="form-label">Link do Grupo</label>
@@ -66,7 +67,8 @@
                                     <textarea id="description" class="form-control form-control-lg" rows="3" placeholder="conte sobre o grupo"></textarea>
                                 </div>
 
-                                <div class="g-recaptcha mb-3" data-sitekey="{{ env('GOOGLE_RECAPTCHA_PUBLIC_KEY') }}"></div>
+                                <!-- Cloudflare -->
+                                <div class="cf-turnstile mb-3" data-sitekey="{{ env('CLOUDFLARE_TURNSTILE_SITE_KEY') }}" data-theme="light" data-size="normal"></div>
                             </div>
 
                             <!-- Warning -->

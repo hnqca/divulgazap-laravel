@@ -4,29 +4,24 @@ class GroupForm {
 
         this.elements = {
             form: $('#form-create-group'),
-
             group: {
                 image: $('.group-image'),
                 name: $('.group-name'),
                 category: $('.group-category-name'),
                 description: $('.group-description')
             },
-
             input: {
                 name: $('#name'),
                 link: $('#link'),
                 description: $('#description'),
                 category: $('#id_category')
             },
-
             warning: $('#warning-create-group'),
-
             button: {
                 submit: $('#btn-submit'),
                 text: $('#text'),
                 loading: $('#loading')
             },
-
             steps: {
                 first: $('#first-step'),
                 second: $('#second-step')
@@ -34,18 +29,20 @@ class GroupForm {
         };
 
         this.api_messages = {
-            'group_name_required':         "Informe um nome válido",
-            'group_name_must_be_string':   "Informe um nome válido",
-            'group_already_created':       "Este grupo já está sendo divulgado",
-            'group_name_too_long':         "Nome do grupo é muito grande",
-            'invite_code_required':        "Informe o link de convite",
-            'invite_code_must_be_string':  "Informe o link de convite",
-            'category_required':           "Selecione uma categoria",
-            'category_id_must_be_integer': "Selecione uma categoria",
-            'category_invalid':            "Selecione uma categoria",
-            'invalid_invite_code':         "Link de convite inválido",
-            'group_created':               "Grupo enviado com sucesso",
-            'internal_error':              "Erro interno. Por favor, atualize a página e tente novamente."
+            'group_name_required':                 "Informe um nome válido",
+            'group_name_must_be_string':           "Informe um nome válido",
+            'group_already_created':               "Este grupo já está sendo divulgado",
+            'group_name_too_long':                 "Nome do grupo é muito grande",
+            'invite_code_required':                "Informe o link de convite",
+            'invite_code_must_be_string':          "Informe o link de convite",
+            'category_required':                   "Selecione uma categoria",
+            'category_id_must_be_integer':         "Selecione uma categoria",
+            'category_invalid':                    "Selecione uma categoria",
+            'invalid_invite_code':                 "Link de convite inválido",
+            'group_created':                       "Grupo enviado com sucesso",
+            'internal_error':                      "Erro interno. Por favor, atualize a página e tente novamente.",
+            'cloudflare_turnstile_token_required': "Captcha não realizado",
+            'cloudflare_turnstile_token_invalid':  "Captcha inválido ou expirado"
         };
 
         this.isLinkValid = false;
@@ -92,11 +89,8 @@ class GroupForm {
 
         this.elements.group.image.attr('src', image);
         this.elements.group.name.text(name);
-
         this.elements.input.name.val(name);
-
         this.elements.input.category.val(1).change();
-
     }
 
     async validateLinkGroup(invite_code) {
@@ -108,10 +102,8 @@ class GroupForm {
         this.toggleButton(true);
 
         if (!response || response.status !== 'success') {
-
             this.showAlert(this.api_messages[response?.message] || this.api_messages['invalid_invite_code']);
             return;
-
         }
 
         this.setGroupData(response.group);
@@ -134,10 +126,7 @@ class GroupForm {
         const status = response?.status ?? 'error';
 
         this.showAlert(this.api_messages[response?.message], status);
-
-        if (status === 'success') {
-            this.resetForm();
-        }
+        this.resetForm();
     }
 
     resetForm() {
@@ -145,6 +134,7 @@ class GroupForm {
         this.elements.steps.first.removeClass('d-none');
         this.elements.steps.second.addClass('d-none');
         this.elements.form[0].reset();
+        turnstile.reset();
     }
 
     getFormData() {
@@ -154,11 +144,13 @@ class GroupForm {
             category_id: this.elements.input.category.val(),
             invite_code: this.sanitizeLinkGroup(
                 this.elements.input.link.val()
-            )
+            ),
+            cloudflare_turnstile_token: document.querySelector('[name="cf-turnstile-response"]').value || ''
         };
     }
 
     setupEventHandlers() {
+
         this.elements.form.on('submit', async (e) => {
 
             e.preventDefault();
