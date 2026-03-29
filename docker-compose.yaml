@@ -32,5 +32,13 @@ services:
     depends_on:
       - db
 
+  scheduler:
+    build: .
+    restart: always
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: php artisan schedule:work
+
 volumes:
   db_data:
