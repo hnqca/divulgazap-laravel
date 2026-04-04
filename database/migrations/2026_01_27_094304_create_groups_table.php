@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     */
+    */
     public function up(): void
     {
         Schema::create('groups', function (Blueprint $table) {
@@ -17,16 +17,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->string('cover_image')->nullable();
+            $table->string('image_path')->nullable();
             $table->string('invite_code')->unique();
             $table->boolean('is_visible')->default(true);
+            $table->timestamp('last_checked_at')->useCurrent();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('groups');
