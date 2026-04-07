@@ -1,35 +1,40 @@
-# 1. PHP 8.3
-FROM php:8.3-apache
+# 1. Use the PHP 8.3 FPM variant based on Alpine Linux for a lightweight footprint
+FROM php:8.3-fpm-alpine
 
-# 2. Dependências do sistema e extensões PHP
-RUN apt-get update && apt-get install -y \
+# 2. Install system dependencies required for PHP extensions and build tools
+RUN apk add --no-cache \
+    bash \
     libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
     libzip-dev \
     zip \
     unzip \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql gd zip
+    icu-dev \
+    oniguruma-dev \
+    $PHPIZE_DEPS
 
-# 3. Habilitar ModRewrite do Apache (Essencial para as rotas do Laravel)
-RUN a2enmod rewrite
+# 3. Configure and install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql gd zip intl bcmath mbstring
 
-# 4. Alterar o DocumentRoot do Apache para a pasta /public do Laravel
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
-# 5. Composer
+# 4. Copy the latest Composer binary
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# 5. Set the working directory
 WORKDIR /var/www/html
 
-COPY . /var/www/html
+# 6. Copy application files and set ownership to the web user
+COPY --chown=www-data:www-data . /var/www/html
 
-# 6. Instalação das dependências usando Composer
-RUN composer install
+# 7. Grant write permissions to Laravel/PHP framework storage and cache directories
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# 7. Permissões (Para evitar erros de escrita no log/cache)
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 storage bootstrap/cache
+# 8. Install dependencies using Composer
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+# 9. Expose port 9000 for FastCGI communication
+EXPOSE 9000
+
+# 10. Start the PHP-FPM server
+CMD ["php-fpm"]
