@@ -10,99 +10,96 @@ class GroupCategorySeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         $categories = [
             [
                 'name' => 'Other',
-                'icon' => 'other.svg',
+                'icon' => 'question', // Icon names follow Font Awesome (fa-{icon}). See: https://fontawesome.com/icons
             ],
             [
                 'name' => 'Gym',
-                'icon' => 'gym.svg',
+                'icon' => 'dumbbell',
             ],
             [
                 'name' => 'Love and Romance',
-                'icon' => 'love.svg',
+                'icon' => 'heart',
             ],
             [
                 'name' => 'Cars and Motorcycles',
-                'icon' => 'car.svg',
+                'icon' => 'car',
             ],
             [
                 'name' => 'Cities',
-                'icon' => 'city.svg',
+                'icon' => 'city',
             ],
             [
                 'name' => 'Buying and Selling',
-                'icon' => 'ecommerce.svg',
+                'icon' => 'bag-shopping',
             ],
             [
                 'name' => 'Cartoons and Anime',
-                'icon' => 'cartoon.svg',
+                'icon' => 'bomb',
             ],
             [
                 'name' => 'Education',
-                'icon' => 'study.svg',
+                'icon' => 'book',
             ],
             [
                 'name' => 'Sports',
-                'icon' => 'sport.svg',
+                'icon' => 'futbol',
             ],
             [
                 'name' => 'Events',
-                'icon' => 'events.svg',
+                'icon' => 'people-group',
             ],
             [
                 'name' => 'Stickers',
-                'icon' => 'sticker.svg',
+                'icon' => 'note-sticky',
             ],
             [
                 'name' => 'Movies and Series',
-                'icon' => 'movie.svg',
+                'icon' => 'clapperboard',
             ],
             [
                 'name' => 'Quotes and Messages',
-                'icon' => 'quote.svg',
+                'icon' => 'comment',
             ],
             [
                 'name' => 'Friendship',
-                'icon' => 'friend.svg',
+                'icon' => 'face-smile',
             ],
             [
                 'name' => 'Technology and Programming',
-                'icon' => 'code.svg',
+                'icon' => 'code',
             ],
             [
                 'name' => 'Games',
-                'icon' => 'game.svg',
+                'icon' => 'gamepad',
             ],
             [
                 'name' => 'Memes',
-                'icon' => 'meme.svg',
+                'icon' => 'face-grin-squint-tears',
             ],
             [
                 'name' => 'Music',
-                'icon' => 'music.svg',
+                'icon' => 'music',
             ],
             [
                 'name' => 'News',
-                'icon' => 'news.svg',
+                'icon' => 'newspaper',
             ],
             [
                 'name' => 'Recipes',
-                'icon' => 'food.svg',
+                'icon' => 'utensils',
             ],
             [
                 'name' => 'Job Vacancies',
-                'icon' => 'job.svg',
+                'icon' => 'briefcase',
             ],
             [
                 'name' => 'Travel and Tourism',
-                'icon' => 'travel.svg',
+                'icon' => 'plane',
             ]
         ];
 
