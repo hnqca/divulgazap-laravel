@@ -14,7 +14,7 @@ class GroupCategoryController extends Controller
             'groups as visible_groups_count' => function ($query) {
                 $query->where('is_visible', true);
             }
-        ])->get();
+        ])->orderBy('visible_groups_count', 'desc')->get();
 
         return view('pages.categories', [
             'groupCategories' => $categories

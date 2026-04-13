@@ -11,11 +11,21 @@ class GroupController extends Controller
 {
     public function index(Request $request)
     {
-        $category = $request->query('category');
+        $categoryName = $request->query('category');
+        $categoryId   = $categoryName ? GroupCategory::where('name', $categoryName)->first() : null;
+        $categoryId   = $categoryId ? $categoryId->id : null;
 
-        $groups = Group::where('is_visible', true)->with('category')->when($category, function ($query, $category) {
-            $query->where('category_id', $category);
-        })->get();
+        if ($categoryName AND !$categoryId) {
+            return redirect()->route('group.categories');
+        }
+
+        $groups = Group::where('is_visible', true);
+
+        if ($categoryId) {
+            $groups = $groups->where('category_id', $categoryId);
+        }
+
+        $groups = $groups->latest()->paginate(18);
 
         return view('pages.home', compact('groups'));
     }
