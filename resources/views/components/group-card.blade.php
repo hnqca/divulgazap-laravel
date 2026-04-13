@@ -1,10 +1,12 @@
-<!-- Card -->
-<div class="card position-relative card-group">
-    <img style="height: 170px; object-fit: cover;" src="{{ asset('storage/images/groups/' . $group->image_path) }}" class="card-img-top" />
+<div class="card">
+    <div class="card-image">
+        <img class="object-fit-cover" width="100%" height="180px" src="{{ asset('storage/images/groups/' . $group->image_path) }}" />
+    </div>
     <div class="card-body">
-        <a href="{{ route('group.show', $group->slug) }}" style="position: absolute; margin-top: -25px; left: 10px;" class="badge bg-dark text-uppercase text-decoration-none">{{ $group->category->name }}</a>
-        <h5 class="card-title mb-3">{{ $group->name }}</h5>
-        <a href="{{ route('group.show', $group->slug) }}" class="btn btn-success btn-group-join w-100">Entrar no Grupo</a>
+        <span class="category-tag">{{ $group->category->name }}</span>
+        <h3 class="card-title">{{ $group->name }}</h3>
+         <a href="{{ route('group.show', $group->slug) }}" class="btn btn-group mt-1">
+            <span class="fs-1">Join Group</span>
+        </a>
     </div>
 </div>
-<!--// Card -->

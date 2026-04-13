@@ -1,13 +1,27 @@
-    <!-- Footer -->
-    <footer class="">
-        <div class="container pt-lg-4 pb-4">
-            <div class="row align-items-center">
-                <div class="col-md-3"></div>
-                <div class="col-md-9 col-lg-6">
-                    <div class="small mb-3 mb-lg-0 text-lg-center">
-                        <span class="text-primary"><a href="/">{{ env('APP_NAME') }}</a></span>
-                    </div>
-                </div>
-            </div>
+<footer>
+    <div class="footer-container footer-grid">
+        <div class="footer-about">
+            <a href="#" class="logo">
+                <i class="fab fa-whatsapp"></i> DivulgaZAP
+            </a>
+            <p class="footer-description">
+                <strong>Find & Share WhatsApp Groups.</strong><br>
+                Discover WhatsApp groups, join the conversation, and connect with people through shared interests.
+            </p>
         </div>
-    </footer>
+
+        <div class="footer-project">
+            <h4 class="footer-title">View on GitHub</h4>
+            <a href="https://github.com/hnqca/divulgazap-laravel" target="_blank" class="btn-github">
+                <i class="fab fa-github"></i>
+                <span>hnqca/divulgazap-laravel</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="">
+            <p>Made with <i class="fas fa-heart" style="color: #ef4444;"></i> by <a href="https://github.com/hnqca" target="_blank">hnqca</a>.</p>
+        </div>
+    </div>
+</footer>
