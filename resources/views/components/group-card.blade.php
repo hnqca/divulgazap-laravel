@@ -5,7 +5,7 @@
     <div class="card-body">
         <span class="category-tag">{{ $group->category->name }}</span>
         <h3 class="card-title">{{ $group->name }}</h3>
-         <a href="{{ route('group.show', $group->slug) }}" class="btn btn-group mt-1">
+         <a href="{{ route('groups.show', $group->slug) }}" class="btn btn-group mt-1">
             <span class="fs-1">Join Group</span>
         </a>
     </div>

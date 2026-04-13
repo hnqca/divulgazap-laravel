@@ -51,4 +51,15 @@ class GroupController extends Controller
             'groupCategories' => $groupCategories
         ]);
     }
+
+    public function join(string $slug)
+    {
+        $group = Group::where('slug', $slug)->first();
+
+        if (!$group) {
+            return redirect()->route('home');
+        }
+
+        return redirect()->to("https://chat.whatsapp.com/{$group->invite_code}");
+    }
 }
