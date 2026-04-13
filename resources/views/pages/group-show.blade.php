@@ -1,30 +1,43 @@
 @extends('layouts.base')
 
+@section('styles')
+<link rel="stylesheet" href="/assets/css/page-group-show.css">
+@endsection
+
 @section('content')
-<main class="container col-md-9 col-sm-12 mt-5 mb-5">
-    <div class="row">
-        <h1 class="text-center mb-5">{{ $group->name }}</h1>
-        <div class="col-md-6 mb-5">
-            <div class="card">
-                <img src="{{ asset('storage/images/groups/'.$group->image_path) }}" class="card-img-top object-fit-cover group-img" width="100%" height="300px" />
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ $group->name }}</h5>
-                    <p class="card-text">{{ $group->description }}</p>
-                    <div class="text-center d-sm-inline d-none">
-                        <a href="https://chat.whatsapp.com/{{ $group->invite_code }}" target="_blank" class="btn btn-success btn-group-join w-100">Entrar no Grupo</a>
-                    </div>
-                </div>
-            </div>
+<div class="group-show-container">
+
+    <main class="group-hero">
+        <div class="group-banner-wrapper">
+            <img src="{{ asset('storage/images/groups/'.$group->image_path) }}" class="group-banner">
+            <div class="banner-overlay"></div>
         </div>
-        <div class="col-md-6">
-            <div class="card card-body">
-                <p class="card-text">Este grupo foi enviado em <strong>{{ $group->created_at_formatted }}</strong>.</p>
-                <hr />
-                <div class="mt-2">
-                    <a href="{{ route('group.create') }}" class="text-decoration-none">Envie o seu grupo</a> também e comece a receber novos integrantes!
-                </div>
-            </div>
+        <div class="group-main-content">
+            <span class="category-tag">{{ $group->category->name }}</span>
+            <h1 class="group-title">{{ $group->name }}</h1>
+            <a href="{{ route('groups.join', $group->slug) }}" class="join-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Join group now
+            </a>
         </div>
+    </main>
+
+    <div class="group-details-grid">
+
+        <aside class="description-box">
+            <h3>About</h3>
+            <p class="card-desc">{{ $group->description ?: "No description provided." }}</p>
+            <a href="{{ route('groups.create') }}" style="color: var(--primary); font-size: 0.85rem; text-decoration: none; font-weight: 600;">
+                <i class="fas fa-plus-circle"></i> Want to promote your group too? Click here!
+            </a>
+        </aside>
+
+        <section class="metadata-box">
+            <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Submitted on: <b>{{ \Carbon\Carbon::parse($group->created_at)->translatedFormat('j M, Y') }}.</b></span>
+            </div>
+        </section>
+
     </div>
-</main>
+</div>
 @endsection
