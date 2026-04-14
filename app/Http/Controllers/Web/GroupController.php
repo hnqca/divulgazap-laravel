@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Group;
 use App\Models\GroupCategory;
+use App\Services\TurnstileService;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -52,7 +53,8 @@ class GroupController extends Controller
         ]);
     }
 
-    public function join(string $slug)
+
+    public function join(string $slug, Request $request, TurnstileService $turnstileService) 
     {
         $group = Group::where('slug', $slug)->first();
 
@@ -60,6 +62,19 @@ class GroupController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->to("https://chat.whatsapp.com/{$group->invite_code}");
+        $request->validate([
+            'cloudflare_turnstile_token' => 'required'
+        ]);
+
+        $isValidTurnstile = $turnstileService->verify(
+            $request->cloudflare_turnstile_token,
+            $request->ip()
+        );
+
+        if (!$isValidTurnstile) {
+            return redirect()->route('groups.show', $group->slug);
+        }
+
+        return redirect()->away("https://chat.whatsapp.com/{$group->invite_code}");
     }
 }

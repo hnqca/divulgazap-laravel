@@ -4,22 +4,44 @@
 <link rel="stylesheet" href="/assets/css/page-group-show.css">
 @endsection
 
+@section('scripts')
+<script>
+    function onTurnstileSuccess(token) {
+        $('#cf-token').val(token);
+        $('.join-btn').prop('disabled', false);
+    }
+</script>
+@endsection
+
 @section('content')
 <div class="group-show-container">
 
     <main class="group-hero">
-        <div class="group-banner-wrapper">
-            <img src="{{ asset('storage/images/groups/'.$group->image_path) }}" class="group-banner">
-            <div class="banner-overlay"></div>
-        </div>
-        <div class="group-main-content">
-            <span class="category-tag">{{ $group->category->name }}</span>
-            <h1 class="group-title">{{ $group->name }}</h1>
-            <a href="{{ route('groups.join', $group->slug) }}" class="join-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Join group now
-            </a>
-        </div>
+        <form method="POST" action="{{ route('groups.join', $group->slug) }}">
+            @csrf
+            <div class="group-banner-wrapper">
+                <img src="{{ asset('storage/images/groups/'.$group->image_path) }}" class="group-banner">
+                <div class="banner-overlay"></div>
+            </div>
+            <div class="group-main-content">
+                <span class="category-tag">{{ $group->category->name }}</span>
+                <h1 class="group-title">{{ $group->name }}</h1>
+
+                <div 
+                    class="cf-turnstile" 
+                    data-sitekey="{{ env('CLOUDFLARE_TURNSTILE_SITE_KEY') }}"
+                    data-callback="onTurnstileSuccess">
+                </div>
+
+                <input type="hidden" name="cloudflare_turnstile_token" id="cf-token">
+
+                <button type="submit" class="btn join-btn mt-1" disabled>
+                    <i class="fab fa-whatsapp"></i> Join group now
+                </button>
+            </div>
+        </form>
     </main>
+
 
     <div class="group-details-grid">
 
