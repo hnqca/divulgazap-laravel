@@ -57,13 +57,15 @@ services:
 
   scheduler:
     build: .
+    env_file:
+      - .env
     container_name: divulgazap-scheduler
     restart: always
     command: php artisan schedule:work
     depends_on:
       - app
     networks:
-      - laravel-network    
+      - laravel-network   
 
 networks:
   laravel-network:

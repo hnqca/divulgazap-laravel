@@ -31,7 +31,7 @@ COPY --chown=www-data:www-data . /var/www/html
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # 8. Install dependencies using Composer
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install
 
 # 9. Expose port 9000 for FastCGI communication
 EXPOSE 9000
