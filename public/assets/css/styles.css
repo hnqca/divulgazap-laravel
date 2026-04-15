@@ -798,7 +798,21 @@ footer * {
     }
 
     .nav-actions .btn-outline {
-        display: none;
+        display: inline-flex; 
+        align-items: center;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .nav-actions .btn-primary {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .nav-actions {
+        gap: 0.5rem; 
+    }
+
+    .logo {
+        font-size: 1.2rem;
     }
 
     .category-grid {
