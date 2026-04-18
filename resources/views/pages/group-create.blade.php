@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', 'Share your WhatsApp Group - '. config('app.name'))
+
 @section('scripts')
 <script src="/assets/js/pages/page-group-create.js"></script>
 @endsection
@@ -67,7 +69,7 @@
                 </div>
 
                 <div style="width: 100%; margin-bottom: 2rem;">
-                    <div class="cf-turnstile" data-sitekey="{{ env('CLOUDFLARE_TURNSTILE_SITE_KEY') }}" data-theme="dark" data-size="normal"></div>
+                    <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark" data-size="normal"></div>
                 </div>
 
             </div>

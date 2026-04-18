@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', $group->name.' - '.config('app.name'))
+
 @section('styles')
 <link rel="stylesheet" href="/assets/css/page-group-show.css">
 @endsection
@@ -29,7 +31,7 @@
 
                 <div 
                     class="cf-turnstile" 
-                    data-sitekey="{{ env('CLOUDFLARE_TURNSTILE_SITE_KEY') }}"
+                    data-sitekey="{{ config('services.turnstile.site_key') }}"
                     data-callback="onTurnstileSuccess">
                 </div>
 

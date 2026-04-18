@@ -2,17 +2,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>@yield('title', env('APP_NAME'))</title>
+    <title>@yield('title', config('app.name'))</title>
 
     <meta charset="UTF-8">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Find and share WhatsApp groups based on your interests: studies, work, tech, gaming, friendship, and more.">
     <meta name="keywords"    content="whatsapp groups, join whatsapp groups, whatsapp group links, find whatsapp communities, share whatsapp group, whatsapp group invite, interest-based groups">
-    <meta name="author"      content="{{ env('APP_NAME') }}">
+    <meta name="author"      content="{{ config('app.name') }}">
 
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="{{ url()->current() }}">
-    <meta property="og:title"       content="Find and Join the Best WhatsApp Groups | {{ env('APP_NAME') }}">
+    <meta property="og:title"       content="Find and Join the Best WhatsApp Groups | {{ config('app.name') }}">
     <meta property="og:description" content="Discover active WhatsApp groups or share your own group to thousands of people.">
     <meta property="og:image"       content="{{ asset('path/to/your/social-preview-image.png') }}">
 
@@ -43,7 +43,7 @@
         @yield('content')
     </div>
     <!-- / Content -->
-    
+
     <!-- Footer -->
     @include('components.footer')
 

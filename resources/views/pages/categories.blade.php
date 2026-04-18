@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', 'Categories - '. config('app.name'))
+
 @section('content')
 <main class="reset">
     <div class="page-header">
