@@ -2,7 +2,7 @@
     <div class="footer-container footer-grid">
         <div class="footer-about">
             <a href="#" class="logo">
-                <i class="fab fa-whatsapp"></i> {{ __("app.name") }}
+                <i class="fab fa-whatsapp"></i> {{ config("app.name") }}
             </a>
             <p class="footer-description">
                 <strong>{{ __("footer.title") }}.</strong><br>
