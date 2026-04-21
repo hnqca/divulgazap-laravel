@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('group_categories')->onDelete('cascade');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->enum('lang', ['en', 'pt', 'es'])->default('en');
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('invite_code')->unique();

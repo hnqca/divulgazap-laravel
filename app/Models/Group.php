@@ -12,6 +12,7 @@ class Group extends Model
         'category_id',
         'name',
         'slug',
+        'lang',
         'description',
         'image_path',
         'invite_code',

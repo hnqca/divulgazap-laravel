@@ -14,93 +14,93 @@ class GroupCategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Other',
+                'name' => ['en' => 'Other', 'pt' => 'Outros', 'es' => 'Otros'],
                 'icon' => 'question', // Icon names follow Font Awesome (fa-{icon}). See: https://fontawesome.com/icons
             ],
             [
-                'name' => 'Gym',
+                'name' => ['en' => 'Gym', 'pt' => 'Academia', 'es' => 'Gimnasio'],
                 'icon' => 'dumbbell',
             ],
             [
-                'name' => 'Love and Romance',
+                'name' => ['en' => 'Love and Romance', 'pt' => 'Amor e Romance', 'es' => 'Amor y Romance'],
                 'icon' => 'heart',
             ],
             [
-                'name' => 'Cars and Motorcycles',
+                'name' => ['en' => 'Cars and Motorcycles', 'pt' => 'Carros e Motos', 'es' => 'Autos y Motos'],
                 'icon' => 'car',
             ],
             [
-                'name' => 'Cities',
+                'name' => ['en' => 'Cities', 'pt' => 'Cidades', 'es' => 'Ciudades'],
                 'icon' => 'city',
             ],
             [
-                'name' => 'Buying and Selling',
+                'name' => ['en' => 'Buying and Selling', 'pt' => 'Compra e Venda', 'es' => 'Compra y Venta'],
                 'icon' => 'bag-shopping',
             ],
             [
-                'name' => 'Cartoons and Anime',
+                'name' => ['en' => 'Cartoons and Anime', 'pt' => 'Desenhos e Animes', 'es' => 'Dibujos y Anime'],
                 'icon' => 'bomb',
             ],
             [
-                'name' => 'Education',
+                'name' => ['en' => 'Education', 'pt' => 'Educação', 'es' => 'Educación'],
                 'icon' => 'book',
             ],
             [
-                'name' => 'Sports',
+                'name' => ['en' => 'Sports', 'pt' => 'Esportes', 'es' => 'Deportes'],
                 'icon' => 'futbol',
             ],
             [
-                'name' => 'Events',
+                'name' => ['en' => 'Events', 'pt' => 'Eventos', 'es' => 'Eventos'],
                 'icon' => 'people-group',
             ],
             [
-                'name' => 'Stickers',
+                'name' => ['en' => 'Stickers', 'pt' => 'Figurinhas', 'es' => 'Stickers'],
                 'icon' => 'note-sticky',
             ],
             [
-                'name' => 'Movies and Series',
+                'name' => ['en' => 'Movies and Series', 'pt' => 'Filmes e Séries', 'es' => 'Películas y Series'],
                 'icon' => 'clapperboard',
             ],
             [
-                'name' => 'Quotes and Messages',
+                'name' => ['en' => 'Quotes and Messages', 'pt' => 'Frases e Mensagens', 'es' => 'Frases y Mensajes'],
                 'icon' => 'comment',
             ],
             [
-                'name' => 'Friendship',
+                'name' => ['en' => 'Friendship', 'pt' => 'Amizade', 'es' => 'Amistad'],
                 'icon' => 'face-smile',
             ],
             [
-                'name' => 'Technology and Programming',
+                'name' => ['en' => 'Technology and Programming', 'pt' => 'Tecnologia e Programação', 'es' => 'Tecnología y Programación'],
                 'icon' => 'code',
             ],
             [
-                'name' => 'Games',
+                'name' => ['en' => 'Games', 'pt' => 'Jogos', 'es' => 'Juegos'],
                 'icon' => 'gamepad',
             ],
             [
-                'name' => 'Memes',
+                'name' => ['en' => 'Memes', 'pt' => 'Memes', 'es' => 'Memes'],
                 'icon' => 'face-grin-squint-tears',
             ],
             [
-                'name' => 'Music',
+                'name' => ['en' => 'Music', 'pt' => 'Música', 'es' => 'Música'],
                 'icon' => 'music',
             ],
             [
-                'name' => 'News',
+                'name' => ['en' => 'News', 'pt' => 'Notícias', 'es' => 'Noticias'],
                 'icon' => 'newspaper',
             ],
             [
-                'name' => 'Recipes',
+                'name' => ['en' => 'Recipes', 'pt' => 'Receitas', 'es' => 'Recetas'],
                 'icon' => 'utensils',
             ],
             [
-                'name' => 'Job Vacancies',
+                'name' => ['en' => 'Job Vacancies', 'pt' => 'Vagas de Emprego', 'es' => 'Ofertas de Trabajo'],
                 'icon' => 'briefcase',
             ],
             [
-                'name' => 'Travel and Tourism',
+                'name' => ['en' => 'Travel and Tourism', 'pt' => 'Viagens e Turismo', 'es' => 'Viajes y Turismo'],
                 'icon' => 'plane',
-            ]
+            ],
         ];
 
         foreach ($categories as $category) {
