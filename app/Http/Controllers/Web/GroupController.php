@@ -12,15 +12,17 @@ class GroupController extends Controller
 {
     public function index(Request $request)
     {
+        $locale = app()->getLocale();
+        
         $categoryName = $request->query('category');
-        $categoryId   = $categoryName ? GroupCategory::where('name', $categoryName)->first() : null;
+        $categoryId   = $categoryName ? GroupCategory::where("name->$locale", $categoryName)->first() : null;
         $categoryId   = $categoryId ? $categoryId->id : null;
 
         if ($categoryName AND !$categoryId) {
             return redirect()->route('group.categories');
         }
 
-        $groups = Group::where('is_visible', true);
+        $groups = Group::where(['is_visible' => true, 'lang' => $locale]);
 
         if ($categoryId) {
             $groups = $groups->where('category_id', $categoryId);
@@ -31,9 +33,12 @@ class GroupController extends Controller
         return view('pages.home', compact('groups'));
     }
 
-    public function show(string $slug)
+    public function show(Request $request)
     {
-        $group = Group::where(['slug' => $slug, 'is_visible' => true])->first();
+        $locale = app()->getLocale();
+        $slug   = $request->route('slug');
+
+        $group = Group::where(['slug' => $slug, 'lang' => $locale, 'is_visible' => true])->first();
 
         if (!$group) {
             return redirect()->route('home');
