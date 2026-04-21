@@ -59,8 +59,9 @@ class GroupController extends Controller
     }
 
 
-    public function join(string $slug, Request $request, TurnstileService $turnstileService) 
+    public function join(Request $request, TurnstileService $turnstileService) 
     {
+        $slug  = $request->route('slug');
         $group = Group::where('slug', $slug)->first();
 
         if (!$group) {
