@@ -18,6 +18,8 @@ const GROUP_FORM_I18N = {
         'internal_error': "Internal error. Please refresh the page and try again.",
         'cloudflare_turnstile_token_required': "Captcha required",
         'cloudflare_turnstile_token_invalid': "Invalid or expired captcha",
+        'lang_required': "Language not found",
+        'lang_invalid': "Invalid language",
 
         // UI Texts
         'ui_submit_group': "Submit Group",
@@ -43,6 +45,8 @@ const GROUP_FORM_I18N = {
         'internal_error': "Erro interno. Por favor, atualize a página e tente novamente.",
         'cloudflare_turnstile_token_required': "Captcha obrigatório",
         'cloudflare_turnstile_token_invalid': "Captcha inválido ou expirado",
+        'lang_required': "Idioma não encontrado",
+        'lang_invalid':  "Idioma inválido",
 
         // UI Texts
         'ui_submit_group': "Enviar Grupo",
@@ -68,6 +72,8 @@ const GROUP_FORM_I18N = {
         'internal_error': "Error interno. Por favor, actualice la página e inténtelo de nuevo.",
         'cloudflare_turnstile_token_required': "Captcha requerido",
         'cloudflare_turnstile_token_invalid': "Captcha inválido o expirado",
+        'lang_required': "Idioma no encontrado",
+        'lang_invalid': "Idioma inválido",
 
         // UI Texts
         'ui_submit_group': "Enviar Grupo",

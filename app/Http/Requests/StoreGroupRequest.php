@@ -24,7 +24,8 @@ class StoreGroupRequest extends ApiRequest
             'invite_code'                => 'required|string|max:255|unique:groups,invite_code',
             'category_id'                => 'required|integer|exists:group_categories,id',
             'description'                => 'nullable|string',
-            'cloudflare_turnstile_token' => 'required'
+            'cloudflare_turnstile_token' => 'required',
+            'lang'                       => 'required|in:pt,en,es'
         ];
     }
 
@@ -45,7 +46,10 @@ class StoreGroupRequest extends ApiRequest
 
             'description.string' => 'description_must_be_string',
 
-            'cloudflare_turnstile_token' => "cloudflare_turnstile_token_required"
+            'cloudflare_turnstile_token.required' => "cloudflare_turnstile_token_required",
+
+            'lang.required' => "lang_required",
+            'lang.in'       => "lang_invalid",
         ];
     }
 }
