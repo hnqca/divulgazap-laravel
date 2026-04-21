@@ -38,7 +38,7 @@
                 <input type="hidden" name="cloudflare_turnstile_token" id="cf-token">
 
                 <button type="submit" class="btn join-btn mt-1" disabled>
-                    <i class="fab fa-whatsapp"></i> Join group now
+                    <i class="fab fa-whatsapp"></i> {{ __('common.buttons.join_group') }}
                 </button>
             </div>
         </form>
@@ -48,21 +48,25 @@
     <div class="group-details-grid">
 
         <aside class="description-box">
-            <h3>About</h3>
-            <p class="card-desc">{{ $group->description ?: "No description provided." }}</p>
+            <h3>{{ __("common.about") }}</h3>
+            <p class="card-desc">{{ $group->description ?: __("common.no_description") }}</p>
             <a href="{{ route('groups.create') }}" style="color: var(--primary); font-size: 0.85rem; text-decoration: none; font-weight: 600;">
-                <i class="fas fa-plus-circle"></i> Want to promote your group too? Click here!
+                <i class="fas fa-plus-circle"></i> {{ __("pages.groups.show.promote_cta") }}
             </a>
         </aside>
 
         <section class="metadata-box">
             <div class="meta-item">
                 <i class="fas fa-calendar-alt"></i>
+<<<<<<< HEAD
                 <span>Submitted on: <b>{{ $group->created_at_formatted }}</b></span>
             </div>
             <div class="meta-item mt-1">
                 <i class="fa-solid fa-eye"></i>
                 <span>Views: <b>{{ $group->views_count }}</b></span>
+=======
+                <span>{{ __("common.submitted_on") }}: <b>{{ \Carbon\Carbon::parse($group->created_at)->translatedFormat('j M, Y') }}.</b></span>
+>>>>>>> 5405b08 (feat(i18n): integrate lang files into pages/components and add JS translations for group creation page)
             </div>
         </section>
 

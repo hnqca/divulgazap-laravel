@@ -13,28 +13,28 @@
 @section('content')
 <div class="group-create-container">
     <aside class="preview-sidebar">
-        <span class="label-preview">Group preview</span>
+        <span class="label-preview">{{ __("pages.groups.create.preview.title") }}</span>
         <div class="card">
             <div class="card-image">
                 <i class="fas fa-image" id="icon-group-placeholder-image"></i>
                 <img width="100%" height="200px" src="/assets/images/placeholder.png" id="demo-group-image" class="object-fit-cover d-none" />
             </div>
             <div class="card-body">
-                <span class="category-tag mt-1" id="demo-group-category">Category</span>
-                <h3 class="card-title" id="demo-group-name">Group Name</h3>
-                <p class="card-desc" id="demo-group-description">Your group's awesome description will appear here...</p>
+                <span class="category-tag mt-1" id="demo-group-category">{{ __("pages.groups.create.preview.category") }}</span>
+                <h3 class="card-title" id="demo-group-name">{{ __("pages.groups.create.preview.group_name") }}</h3>
+                <p class="card-desc" id="demo-group-description">{{ __("pages.groups.create.preview.description_mock") }}</p>
             </div>
         </div>
     </aside>
 
 
     <main class="form-content">
-        <h1>Promote your Group</h1>
-        <p>and start getting new members! 😍</p>
+        <h1>{{ __("pages.groups.create.title") }}</h1>
+        <p>{{ __("pages.groups.create.subtitle") }}</p>
 
         <form id="form-create-group">
             <div id="first-step" class="form-group">
-                <label>Group Link (WhatsApp)</label>
+                <label>{{ __("pages.groups.create.form.group_link") }}</label>
                 <div class="input-icon-wrapper">
                     <i class="fas fa-link"></i>
                     <input type="url" id="link" value="" placeholder="https://chat.whatsapp.com/..." required>
@@ -43,11 +43,11 @@
 
             <div id="second-step" class="d-none">
                <div class="form-group">
-                    <label>Category</label>
+                    <label>{{ __("pages.groups.create.form.category") }}</label>
                     <div class="input-icon-wrapper wrapper-select2">
                         <i class="fas fa-th-large select2-icon"></i>
                         <select id="category_id" name="category_id" class="select2-dark">
-                            <option value="" disabled selected>Choose a Category</option>
+                            <option value="" disabled selected>{{ __("pages.groups.create.form.category_hint") }}</option>
                             @foreach($groupCategories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -56,16 +56,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Group Name</label>
+                    <label>{{ __("pages.groups.create.form.group_name") }}</label>
                     <div class="input-icon-wrapper">
                         <i class="fas fa-users"></i>
-                        <input type="text" id="name" placeholder="Group Name" maxlength="30">
+                        <input type="text" id="name" placeholder='{{ __("pages.groups.create.form.group_name") }}' maxlength="30">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Description (optional)</label>
-                    <textarea id="description" rows="4" placeholder="Tell us a little about this group"></textarea>
+                    <label>{{ __("pages.groups.create.form.description") }}</label>
+                    <textarea id="description" rows="4" placeholder='{{ __("pages.groups.create.form.description_hint") }}'></textarea>
                 </div>
 
                 <div style="width: 100%; margin-bottom: 2rem;">
@@ -80,7 +80,7 @@
 
             <button type="submit" id="btn-submit" class="btn btn-submit">
                  <div id="loading" class="spinner-border-custom spinner-light d-none" role="status"></div>
-                <span id="text">Verify link</span>
+                <span id="text">{{ __("pages.groups.create.form.verify_link") }}</span>
             </button>
 
         </form>

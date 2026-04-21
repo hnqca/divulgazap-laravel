@@ -53,6 +53,10 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="/assets/js/main.js"></script>
 
+    <script>
+        window.locale = "{{ app()->getLocale() }}";
+    </script>
+
     <!-- Page JS -->
     @yield('scripts')
 </body>

@@ -5,8 +5,8 @@
 @section('content')
 <main class="reset">
     <div class="page-header">
-        <h1>Categories</h1>
-        <p>Explore groups by theme and find exactly what you're looking for.</p>
+        <h1>{{ __("pages.categories.hero.title") }}</h1>
+        <p>{{ __("pages.categories.hero.description") }}</p>
     </div>
     <div class="container">
         <div class="category-grid">
