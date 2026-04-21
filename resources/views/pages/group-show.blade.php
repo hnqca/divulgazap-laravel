@@ -38,7 +38,7 @@
                 <input type="hidden" name="cloudflare_turnstile_token" id="cf-token">
 
                 <button type="submit" class="btn join-btn mt-1" disabled>
-                    <i class="fab fa-whatsapp"></i> {{ __('common.buttons.join_group') }}
+                    <i class="fab fa-whatsapp"></i> {{ __('common.buttons.join_now') }}
                 </button>
             </div>
         </form>
