@@ -41,7 +41,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan storage:link",
-            "@php -r \"for (\\$i=0; \\$i<6; \\$i++) { passthru('php artisan migrate --seed --force', \\$exitCode); if (\\$exitCode === 0) { echo '[SUCCESS]: Database ready!'.PHP_EOL; exit(0); } echo '[WARNING]: Database not ready yet... retrying in 60s...'.PHP_EOL; sleep(60); } echo '[ERROR]: Database never became ready.'.PHP_EOL; exit(1);\""
+            "@php -r \"\\$max=5; for (\\$i=1; \\$i<=\\$max; \\$i++) { \\$out=[]; exec('php artisan migrate --seed --force --ansi 2>&1', \\$out, \\$code); if (\\$code === 0) { echo implode(PHP_EOL, \\$out).PHP_EOL; echo '[SUCCESS]: Database ready!'.PHP_EOL; exit(0); } if (\\$i < \\$max) { echo '[WARNING]: Database not ready yet... retrying again in 60s - attempt '.sprintf('%02d/%02d', \\$i, \\$max).PHP_EOL; sleep(60); } } echo '[ERROR]: Database never became ready.'.PHP_EOL; exit(1);\""
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
