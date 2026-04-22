@@ -16,6 +16,7 @@ class Group extends Model
         'image_path',
         'invite_code',
         'is_visible',
+        'views_count',
         'last_checked_at'
     ];
 
@@ -26,6 +27,6 @@ class Group extends Model
 
     public function getCreatedAtFormattedAttribute()
     {
-        return $this->created_at->format('d/m/Y');
+        return \Carbon\Carbon::parse($this->created_at)->translatedFormat('j M, Y');
     }
 }

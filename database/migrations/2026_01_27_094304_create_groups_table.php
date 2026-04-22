@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->string('invite_code')->unique();
             $table->boolean('is_visible')->default(true);
+            $table->integer('views_count')->default(0);
             $table->timestamp('last_checked_at')->useCurrent();
             $table->timestamps();
         });

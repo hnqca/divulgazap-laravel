@@ -58,7 +58,11 @@
         <section class="metadata-box">
             <div class="meta-item">
                 <i class="fas fa-calendar-alt"></i>
-                <span>Submitted on: <b>{{ \Carbon\Carbon::parse($group->created_at)->translatedFormat('j M, Y') }}.</b></span>
+                <span>Submitted on: <b>{{ $group->created_at_formatted }}</b></span>
+            </div>
+            <div class="meta-item mt-1">
+                <i class="fa-solid fa-eye"></i>
+                <span>Views: <b>{{ $group->views_count }}</b></span>
             </div>
         </section>
 

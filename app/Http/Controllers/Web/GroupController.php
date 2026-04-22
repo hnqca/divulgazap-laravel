@@ -75,6 +75,8 @@ class GroupController extends Controller
             return redirect()->route('groups.show', $group->slug);
         }
 
+        $group->increment('views_count');
+
         return redirect()->away("https://chat.whatsapp.com/{$group->invite_code}");
     }
 }
