@@ -12,7 +12,7 @@ class GroupCategoryController extends Controller
     {
         $categories = GroupCategory::withCount([
             'groups as visible_groups_count' => function ($query) {
-                $query->where(['is_visible' => true, 'lang' => app()->getLocale()]);
+                $query->where(['is_visible' => true]);
             }
         ])->orderBy('visible_groups_count', 'desc')->get();
 

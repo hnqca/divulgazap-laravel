@@ -30,4 +30,9 @@ class Group extends Model
     {
         return \Carbon\Carbon::parse($this->created_at)->translatedFormat('j M, Y');
     }
+
+    public function scopeOrderByPreferredLanguage($query, $locale)
+    {
+        return $query->orderByRaw("CASE WHEN lang = ? THEN 0 ELSE 1 END", [$locale]);
+    }
 }

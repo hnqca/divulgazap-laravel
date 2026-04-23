@@ -22,23 +22,22 @@ class GroupController extends Controller
             return redirect()->route('group.categories');
         }
 
-        $groups = Group::where(['is_visible' => true, 'lang' => $locale]);
+        $groups = Group::where(['is_visible' => true]);
 
         if ($categoryId) {
             $groups = $groups->where('category_id', $categoryId);
         }
 
-        $groups = $groups->latest()->paginate(18);
+        $groups = $groups->orderByPreferredLanguage($locale)->orderBy('created_at', 'desc')->paginate(18);
 
         return view('pages.home', compact('groups'));
     }
 
     public function show(Request $request)
     {
-        $locale = app()->getLocale();
-        $slug   = $request->route('slug');
+        $slug = $request->route('slug');
 
-        $group = Group::where(['slug' => $slug, 'lang' => $locale, 'is_visible' => true])->first();
+        $group = Group::where(['slug' => $slug, 'is_visible' => true])->first();
 
         if (!$group) {
             return redirect()->route('home');
