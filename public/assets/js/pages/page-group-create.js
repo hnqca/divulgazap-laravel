@@ -194,7 +194,7 @@ class GroupForm {
             const response = await API.request('GET', `api/groups/invite-code/${invite_code}/validate`);
 
             if (!response || response.status !== 'success') {
-                const errorMsg = this.t(response?.message) || this.t('invalid_invite_code');
+                const errorMsg = this.t('invalid_invite_code');
                 this.showAlert(errorMsg);
                 return;
             }
@@ -229,7 +229,7 @@ class GroupForm {
             // Attempts to translate the message. If no mapping is found, uses the raw message or a fallback.
             const message = GROUP_FORM_I18N[this.locale][response?.message]
                 ? this.t(response.message)
-                : (response?.message || this.t('ui_error_fallback'));
+                : this.t('ui_error_fallback');
 
             this.showAlert(message, status);
 
