@@ -58,15 +58,11 @@
         <section class="metadata-box">
             <div class="meta-item">
                 <i class="fas fa-calendar-alt"></i>
-<<<<<<< HEAD
-                <span>Submitted on: <b>{{ $group->created_at_formatted }}</b></span>
+                <span>{{ __("common.submitted_on") }}: <b>{{ $group->created_at_formatted }}</b></span>
             </div>
             <div class="meta-item mt-1">
                 <i class="fa-solid fa-eye"></i>
-                <span>Views: <b>{{ $group->views_count }}</b></span>
-=======
-                <span>{{ __("common.submitted_on") }}: <b>{{ \Carbon\Carbon::parse($group->created_at)->translatedFormat('j M, Y') }}.</b></span>
->>>>>>> 5405b08 (feat(i18n): integrate lang files into pages/components and add JS translations for group creation page)
+                <span>{{ __("common.views") }}: <b>{{ $group->views_count }}</b></span>
             </div>
         </section>
 

@@ -4,6 +4,7 @@ return [
     'about'          => 'About',
     'submitted_on'   => 'Submitted on',
     'no_description' => 'No description provided',
+    'views'          => 'Views',
 
     'buttons' => [
         'join'        => 'Join Group',

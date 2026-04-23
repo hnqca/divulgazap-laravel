@@ -4,6 +4,7 @@ return [
     'about'          => 'Acerca de',
     'submitted_on'   => 'Enviado el',
     'no_description' => 'No se proporcionó ninguna descripción',
+    'views'          => 'Visualizaciones',
 
     'buttons' => [
         'join'        => 'Unirse',
