@@ -1,5 +1,7 @@
 <div align="center">
-    <img src="https://i.ibb.co/TMvwjByB/cover01.png" width="100%" />
+    <a href="https://divulgazap.alwaysdata.net" target="_blank">
+        <img src="https://i.ibb.co/TMvwjByB/cover01.png" width="100%" />
+    </a>
 </div>
 
 ## 📌 About
@@ -27,6 +29,7 @@ This project was built as a **learning project** to explore:
 - Dockerized development environments
 - Web Scraping
 - Cloudflare Turnstile
+- Internationalization (i18n)
 
 ---
 
